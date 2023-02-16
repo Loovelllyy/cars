@@ -1,0 +1,103 @@
+*{
+	margin: 0;
+	padding: 0;
+	width: auto;
+	height: auto;
+}
+
+body{
+	background-color: rgb(0, 0, 0);
+	color:rgb(244, 235, 223);
+}
+
+.all{
+	background-color: rgb(147, 144, 141);
+    text-align: center;
+    padding: 12px;
+    color: 0;
+    margin: 100px 100px;
+		/* margin: auto; */
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 400;
+		font-size: 25px;
+    /* position: relative; */
+    box-shadow: 0px 2px 16px 0px;
+		height: max-content;
+}
+
+.pictures{
+	width: 500px; 
+	height: 300px;
+}
+/* .bl{
+	background-color: aqua;
+	width: 500px;
+	height: 20px;
+} */
+
+.road{
+	/* width: 500px; */
+	/* height: 30px; */
+	margin: 0;
+}
+
+.FirstCAR, .SecondCAR{
+
+}
+
+.calculations{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.car_first, .car_second, .calcSecond, .calcFirst, .car_third, .car_fourth, .calcThird, .calcFourth{
+	display: flex;
+	align-items: center;
+}
+.speedFirstCAR, .boostFirstCAR, .lengthFirstCAR, .deltaAfter, .deltaBefore, .speedSecondCAR, .boostSecondCAR, .lengthSecondCAR, .speedThirdCAR, .boostThirdCAR, .lengthThirdCAR, .speedFourthCAR, .boostFourthCAR, .lengthFourthCAR{
+	display: grid;
+	margin: 25px;
+}
+
+
+
+.deltaAB, .deltaGV{
+	display: flex;
+}
+
+.car_second, .calcSecond{
+	display: flex;
+}
+
+.btn{
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	margin: 15px 10px;
+}
+#btn{
+	padding: 10px;
+	border-radius: 2px;
+	border-style: none;
+	background-color: rgb(233, 226, 200);
+}
+#btn:hover{
+	background-color: rgba(209, 198, 182, 0.82);
+	cursor: pointer;
+	border-color: rgba(173, 211, 240, 0.8);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(212, 224, 233, 0.6);
+	outline: 0 none;
+}
+#inp{
+	display: flex;
+	background: #000;
+	width: 10px;
+	height: 10px;
+	margin: 15px 20px;
+}
+
+.calcFirst p, .calcSecond p , .calcThird p , .calcFourth p{
+	font-size: 15px;
+}
+

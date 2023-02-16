@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Обгон</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	
+
+	<div class="all">
+		<!-- <div class="pictures">
+			 <div class="bl"></div> 
+			 <div class="roads"> 
+				<img src="./road.png" alt="дорога" class="road">
+			</div>
+			<div class="cars">
+				<div class="carfirst">
+					<img src="./car.png" alt="" class="FirstCAR">
+				</div>
+				<div class="carsecond">
+					<img src="./car.png" alt="" class="SecondCAR">
+				</div>
+			</div> 
+		</div> -->
+
+		<div class="calculations">
+
+			<div class="car_first">
+				<span class="text">
+					<p>Машина А</p> 
+				</span>
+				<div class="calcFirst">
+					<div class="speedFirstCAR">
+						<p class="p">Скорость, км/ч</p>
+						<input type="text" name="" id="speedFirstCAR" placeholder=" ">
+					</div>
+					<div class="boostFirstCAR">
+						<p>Ускорение, м/с</p>
+						<input type="text" name="" id="boostFirstCAR">
+					</div>
+					<div class="lengthFirstCAR">
+						<p>Длина машины, м</p>
+						<input type="text" name="" id="lengthFirstCAR">
+					</div>
+				</div>
+			</div>
+			
+
+			<div class="car_second">
+				<span class="text">
+					<p>Машина Б</p> 
+				</span>
+				<div class="calcSecond">
+					<div class="speedSecondCAR">
+						<p>Скорость, км/ч</p>
+						<input type="text" name="" id="speedSecondCAR">
+					</div>
+					<div class="boostSecondCAR">
+						<p>Ускорение, м/с</p>
+						<input type="text" name="" id="boostSecondCAR">
+					</div>
+					<div class="lengthSecondCAR">
+						<p>Длина машины, м</p>
+						<input type="text" name="" id="lengthSecondCAR">
+					</div>
+				</div>
+			</div>
+
+
+			<div class="deltaAB">
+				<div class="deltaABBefore">
+					<p>Дистанция перед обгоном, м</p>
+					<input type="text" name="" id="deltaABBeforeCAR">
+				</div>
+				<div class="deltaABAfter">
+					<p>Дистанция после обгона, м</p>
+					<input type="text" name="" id="deltaABAfterCAR">
+				</div>
+			</div>
+
+
+			<div class="car_third">
+				<span class="text">
+					<p>Машина В</p> 
+				</span>
+				<div class="calcThird">
+					<div class="speedThirdCAR">
+						<p class="p">Скорость, км/ч</p>
+						<input type="text" name="" id="speedThirdCAR" placeholder=" ">
+					</div>
+					<div class="boostThirdCAR">
+						<p>Ускорение, м/с</p>
+						<input type="text" name="" id="boostThirdCAR">
+					</div>
+					<div class="lengthThirdCAR">
+						<p>Длина машины, м</p>
+						<input type="text" name="" id="lengthThirdCAR">
+					</div>
+				</div>
+			</div>
+
+			<div class="car_fourth">
+				<span class="text">
+					<p>Машина Г</p> 
+				</span>
+				<div class="calcFourth">
+					<div class="speedFourthCAR">
+						<p class="p">Скорость, км/ч</p>
+						<input type="text" name="" id="speedFourthCAR" placeholder=" ">
+					</div>
+					<div class="boostFourthCAR">
+						<p>Ускорение, м/с</p>
+						<input type="text" name="" id="boostFourthCAR">
+					</div>
+					<div class="lengthFourthCAR">
+						<p>Длина машины, м</p>
+						<input type="text" name="" id="lengthFourthCAR">
+					</div>
+				</div>
+			</div>
+
+			<div class="deltaGV">
+				<div class="deltaGVBefore">
+					<p>Дистанция перед обгоном, м</p>
+					<input type="text" name="" id="deltaGVBeforeCAR">
+				</div>
+				<div class="deltaGVAfter">
+					<p>Дистанция после обгона, м</p>
+					<input type="text" name="" id="deltaGVAfterCAR">
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div class="btn">
+				<button id="btn">
+					<p>Рассчитать</p>
+				</button>
+
+		<div id="inp">	</div>
+		</div>
+
+	</div>
+
+
+
+	<script src="./index.js"></script>
+</body>
+</html>
