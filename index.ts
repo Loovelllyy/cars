@@ -1,24 +1,20 @@
 /*jshint esversion: 10 */
 
 const a = prompt("количество машин", '');
-// console.log(a);
-
 //кнопка
 const button = document.getElementById("btn");
-
-
 const inp = document.getElementById("inp").value;
 
 
 // 1 и 2 машина
-speed1 = Number(document.getElementById("speedFirstCAR").value); // скорость 1 машины
-speed2 = Number(document.getElementById("speedSecondCAR").value); // скорость 2 машины
-a1 = Number(document.getElementById("boostFirstCAR").value); // ускорение 1 машины
-a2 = Number(document.getElementById("boostSecondCAR").value); // ускорение 2 машины
-width1 = Number(document.getElementById("lengthFirstCAR").value); // длина 1 машины
-width2 = Number(document.getElementById("lengthSecondCAR").value); // длина 2 машины
-deltaAbBefore = Number(document.getElementById("deltaABBeforeCAR").value); // дельта до
-deltaAbAfter = Number(document.getElementById("deltaABAfterCAR").value); // дельта после
+const speed1 = Number(document.getElementById("speedFirstCAR")); // скорость 1 машины
+speed2 = Number(document.getElementById("speedSecondCAR")); // скорость 2 машины
+a1 = Number(document.getElementById("boostFirstCAR")); // ускорение 1 машины
+a2 = Number(document.getElementById("boostSecondCAR")); // ускорение 2 машины
+width1 = Number(document.getElementById("lengthFirstCAR")); // длина 1 машины
+width2 = Number(document.getElementById("lengthSecondCAR")); // длина 2 машины
+deltaAbBefore = Number(document.getElementById("deltaABBeforeCAR")); // дельта до
+deltaAbAfter = Number(document.getElementById("deltaABAfterCAR")); // дельта после
 
 // 3 и 4 машина
 speed3 = Number(document.getElementById("speedThirdCAR").value); // скорость 3 машины
@@ -37,7 +33,7 @@ button.onclick = function () {
 	if (a === 4 && a !== 1) { // условие для 4 машин
 
 		// stylconsole.clear();
-		const Xlast = 300;
+    const Xlast = 300;
 		const carA = {
 			width1: 0, //4
 			speed1: 0, //60
