@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import {CarCard} from "./Form/CarCard";
+import {FormCars} from "./Form";
 
 export const App: FC = () => {
     return (
-       <CarCard />
+       <FormCars />
     )
 };

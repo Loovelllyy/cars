@@ -33,7 +33,7 @@ button.onclick = function () {
 	if (a === 4 && a !== 1) { // условие для 4 машин
 
 		// stylconsole.clear();
-		const Xlast = 300;
+    const Xlast = 300;
 		const carA = {
 			width1: 0, //4
 			speed1: 0, //60
