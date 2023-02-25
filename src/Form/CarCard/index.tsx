@@ -1,49 +1,24 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import { CarCardView } from "./CarCardView";
-import redCar from '../../../public/assets/redCar.png';
-import blackCar from '../../../public/assets/blackCar.png';
-import greenCar from '../../../public/assets/greenCar.png';
-import yellowCar from '../../../public/assets/yellowCar.png';
 import {FormikProps} from "formik";
 
 interface ICarCard {
   formik: FormikProps<any>,
-  carName: 'carA' | 'carB' | 'carV' | 'carG',
+  name: 'carA' | 'carB' | 'carV' | 'carG',
+  img: string;
 }
 
-export function CarCard({formik, carName}: ICarCard) {
-  let [carImg, setCarImg] = useState(redCar);
-  useEffect(() => {
-    console.log(carName);
-    switch (carName) {
-      case 'carA':
-        setCarImg(blackCar)
-        return
-      case "carB":
-        setCarImg(redCar)
-        return;
-      case "carV":
-        setCarImg(greenCar)
-        return;
-      case "carG":
-        setCarImg(yellowCar)
-        return;
-      default:
-        setCarImg('');
-    }
-  }, [])
+export function CarCard({formik, name, img}: ICarCard) {
 
   return (
     <CarCardView
-      acceleration={formik.values[carName].acceleration}
-      width={formik.values[carName].width}
-      speed={formik.values[carName].speed}
+      acceleration={formik.values[name].acceleration}
+      width={formik.values[name].width}
+      speed={formik.values[name].speed}
+      isActive={ formik.values[name].isActive }
       onChangeValue={formik.handleChange.bind(formik)}
-      // onAccelerationChange={formik.handleChange}
-      // onSpeedChange={setSpeed}
-      // onWidthChange={setWidth}
-      iconSrc={carImg}
-      carName={carName}
+      iconSrc={img}
+      carName={name}
     />
   )
 }

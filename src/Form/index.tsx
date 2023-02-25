@@ -1,18 +1,24 @@
 import React from 'react';
-import {Formik, useFormik, useFormikContext, } from 'formik'
+import { useFormik } from 'formik'
 import {CarCard} from "./CarCard";
 import {Button, InputLabel, Stack, TextField} from "@mui/material";
+import redCar from '../../public/assets/redCar.png';
+import blackCar from '../../public/assets/blackCar.png';
+import greenCar from '../../public/assets/greenCar.png';
+import yellowCar from '../../public/assets/yellowCar.png';
 
-interface ICar {
+export interface ICar {
   width: number | '',
   speed: number | '',
   acceleration: number | '',
+
+  isActive?: boolean,
 }
 
 const carA: ICar = {
   width: '',
   speed: '',
-  acceleration: ''
+  acceleration: '',
 };
 
 const carB: ICar = {
@@ -25,12 +31,14 @@ const carV: ICar = {
   width: '',
   speed: '',
   acceleration: '',
+  isActive: false,
 };
 
 const carG: ICar = {
   width: '',
   speed: '',
   acceleration: '',
+  isActive: false,
 };
 
 const Xlast = 300;
@@ -39,6 +47,7 @@ const deltaAbBefore: number | '' = '';
 const deltaAbAfter: number | '' = '';
 const deltaGvBefore: number | '' = '';
 const deltaGvAfter: number | '' = '';
+
 
 export const FormCars = () => {
   // const formik = useFormik();
@@ -58,18 +67,26 @@ export const FormCars = () => {
       console.log(values);
     },
   });
-
+  const {values:
+    {
+      carA: {isActive: activeA},
+      carB: {isActive: activeB},
+      carV: {isActive: activeV},
+      carG: {isActive: activeG}
+    }
+  } = formik;
   return (
     <>
-      <form {...formik} onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <Stack flexDirection='row' alignItems='center' gap={2}>
-          <CarCard formik={formik} carName='carA' key={1}></CarCard>
-          <CarCard formik={formik} carName='carB' key={2}></CarCard>
-          <CarCard formik={formik} carName='carV' key={3}></CarCard>
-          <CarCard formik={formik} carName='carG' key={4}></CarCard>
+          <CarCard formik={formik} img={redCar} name='carA'></CarCard>
+          <CarCard formik={formik} img={blackCar} name='carB'></CarCard>
+          <CarCard formik={formik} img={greenCar} name='carV'></CarCard>
+          <CarCard formik={formik} img={yellowCar} name='carG'></CarCard>
           <Stack flexDirection='column' gap={1}>
             <InputLabel>Расстояние между машинами А и Б до обгона:</InputLabel>
             <TextField
+              disabled={ !(activeA && activeB) }
               size='small'
               type='number'
               value={formik.values.deltaAbBefore}
@@ -81,6 +98,7 @@ export const FormCars = () => {
 
             <InputLabel>Расстояние между машинами А и Б после обгона:</InputLabel>
             <TextField
+              disabled={ !(activeA && activeB) }
               size='small'
               type='number'
               value={formik.values.deltaAbAfter}
@@ -92,6 +110,7 @@ export const FormCars = () => {
 
             <InputLabel>Расстояние между машинами В и Г до обгона:</InputLabel>
             <TextField
+              disabled={ !(activeV && activeG) }
               size='small'
               type='number'
               value={formik.values.deltaGvBefore}
@@ -103,6 +122,7 @@ export const FormCars = () => {
 
             <InputLabel>Расстояние между машинами  В и Г после обгона:</InputLabel>
             <TextField
+              disabled={ !(activeV && activeG) }
               size='small'
               type='number'
               value={formik.values.deltaGvAfter}

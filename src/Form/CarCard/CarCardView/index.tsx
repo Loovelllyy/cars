@@ -1,33 +1,32 @@
-import {Avatar, Paper, Stack, Switch, TextField} from "@mui/material";
 import React from "react";
+import { Paper, Stack, Switch, TextField } from "@mui/material";
+import { ICar } from '../../index';
 
-interface ICarCardViewProps {
+interface ICarCardViewProps extends ICar {
   iconSrc: string;
   carName: 'carA' | 'carB' | 'carV' | 'carG',
-  // onWidthChange: (val: number | '') => void
-  // onSpeedChange: (val: number | '') => void
-  // onAccelerationChange: (val: number | '') => void
 
   onChangeValue: (e: React.ChangeEvent<unknown>) => void,
-
-  width: number | '';
-  speed: number | '';
-  acceleration: number | '';
 }
 
-const transformValue = (str: string) => {
-  if (str === '') return '';
-  const num = +str;
-  return isNaN(num)? 0 : num;
-}
+// const transformValue = (str: string) => {
+//   if (str === '') return '';
+//   const num = +str;
+//   return isNaN(num)? 0 : num;
+// }
 
-export const CarCardView = ({ iconSrc, speed, width, acceleration, onChangeValue, carName }: ICarCardViewProps) => {
+export const CarCardView = ({ iconSrc, speed, width, acceleration, onChangeValue, carName, isActive }: ICarCardViewProps) => {
+  const active = typeof isActive === 'undefined' || isActive;
   return (
-    <Paper sx={{ width: 'max-content', padding: '20px' }}>
-      <Switch label={{ 'aria-label': 'test' }} />
+    <Paper sx={{ width: 'max-content', padding: '20px', 'min-height': '400px' }}>
+      <div style={{ minHeight: 40 }}>
+      { typeof isActive !== 'undefined' && <Switch checked={ isActive }  name={ `${carName}.isActive` } onChange={ onChangeValue } /> }
+      </div>
+
       <Stack direction='column' alignItems='center' justifyContent='space-evenly' gap={2}>
-        <img src={ iconSrc } alt='car' style={{ objectFit: 'scale-down', transform: 'rotate(90deg)', height: '150px' }} />
+        <img draggable={false} src={ iconSrc } alt='car' style={{ objectFit: 'scale-down', transform: 'rotate(90deg)', height: '150px', userSelect: 'none' }} />
         <TextField
+          disabled={!active}
           label='Габариты машины' type='number'
           inputProps={{ 'autoComplete': 'off' }}
           id={ `${carName}.width` }
@@ -36,6 +35,7 @@ export const CarCardView = ({ iconSrc, speed, width, acceleration, onChangeValue
           value={ width } size='small' variant='outlined'>
         </TextField>
         <TextField
+          disabled={!active}
           label='Скорость, км/ч' type='number'
           id={ `${carName}.speed` }
           name={ `${carName}.speed` }
@@ -44,6 +44,7 @@ export const CarCardView = ({ iconSrc, speed, width, acceleration, onChangeValue
           value={ speed } size='small' variant='outlined'>
         </TextField>
         <TextField
+          disabled={!active}
           label='Ускорение м/с²' type='number'
           inputProps={{ 'autoComplete': 'off' }}
           id={ `${carName}.acceleration` }
