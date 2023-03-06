@@ -1,5 +1,6 @@
 import React from 'react';
 import { useFormik } from 'formik'
+import {object, number, boolean} from 'yup';
 import {CarCard} from "./CarCard";
 import {Button, InputLabel, Stack, TextField} from "@mui/material";
 import redCar from '../../public/assets/redCar.png';
@@ -51,6 +52,60 @@ const deltaAbAfter: number | '' = '';
 const deltaGvBefore: number | '' = '';
 const deltaGvAfter: number | '' = '';
 
+export type TInitialValue = {
+  carA: ICar;
+  carB: ICar;
+  carV: ICar;
+  carG: ICar;
+  Xlast: number;
+  deltaAbBefore: number | '';
+  deltaAbAfter: number | '';
+  deltaGvBefore: number | '';
+  deltaGvAfter: number | ''
+}
+const REQ = 'Это поле обязательное'
+const valid = object().shape({
+    carA: object().shape({
+      width: number().required(REQ).min(0, 'Минимальная длина машины: 0').max(10, 'Максимальная длина машины: 10'),
+      speed: number().required(REQ).min(0, 'Минимальная скорость машины: 0').max(200, 'Максимальная скорость машины: 200'),
+      acceleration: number().required(REQ).min(0, 'Минимальное ускорение машины: 0').max(4, 'Максимальное ускорение машины: 4'),
+    }),
+    carB: object().shape({
+      width: number().required(REQ).min(0, 'Минимальная длина машины: 0').max(10, 'Максимальная длина машины: 10'),
+      speed: number().required(REQ).min(0, 'Минимальная скорость машины: 0').max(200, 'Максимальная скорость машины: 200'),
+      acceleration: number().required(REQ).min(0, 'Минимальное ускорение машины: 0').max(4, 'Максимальное ускорение машины: 4'),
+    }),
+    carV: object().shape({
+      isActive: boolean(),
+      width: number().when('isActive', {
+        is: (isActive: boolean) => isActive,
+        then: () => number().required(REQ).min(0, 'Минимальная длина машины: 0').max(10, 'Максимальная длина машины: 10'),
+      }),
+      speed: number().when('isActive', {
+        is: (isActive: boolean) => isActive,
+        then: () => number().required(REQ).min(0, 'Минимальная скорость машины: 0').max(200, 'Максимальная скорость машины: 200'),
+      }),
+      acceleration: number().when('isActive', {
+        is: (isActive: boolean) => isActive,
+        then: () => number().required(REQ).min(0, 'Минимальное ускорение машины: 0').max(4, 'Максимальное ускорение машины: 4'),
+      }),
+    }),
+    carG: object().shape({
+      isActive: boolean(),
+      width: number().when('isActive', {
+        is: (isActive: boolean) => isActive,
+        then: () => number().required(REQ).min(0, 'Минимальная длина машины: 0').max(10, 'Максимальная длина машины: 10'),
+      }),
+      speed: number().when('isActive', {
+        is: (isActive: boolean) => isActive,
+        then: () => number().required(REQ).min(0, 'Минимальная скорость машины: 0').max(200, 'Максимальная скорость машины: 200'),
+      }),
+      acceleration: number().when('isActive', {
+        is: (isActive: boolean) => isActive,
+        then: () => number().required(REQ).min(0, 'Минимальное ускорение машины: 0').max(4, 'Максимальное ускорение машины: 4'),
+      }),
+    }),
+})
 
 export const FormCars = () => {
   // const formik = useFormik();
@@ -66,20 +121,11 @@ export const FormCars = () => {
       deltaGvBefore,
       deltaGvAfter,
     },
+    validationSchema: valid,
     onSubmit: (values) => {
-      console.log(values);
-      
-        
-      try {
-        const cars1 = obgonAbs(values.carA, values.carB, +values.deltaAbBefore, +values.deltaAbAfter);
-        const cars2 = obgonAbs(values.carG, values.carV, +values.deltaGvBefore, +values.deltaGvAfter);
-        console.log(cars1, cars2);
-        
-        // console.log( isObgon(cars1, cars2, { ...values }, values.Xlast));
-      } catch (e) {
-          console.log(e);  
-       }
-      },
+      const test = isObgon(values);
+      console.log(test);
+    }
   });
   const {values:
     {
@@ -124,7 +170,7 @@ export const FormCars = () => {
 
             <InputLabel>Расстояние между машинами В и Г до обгона:</InputLabel>
             <TextField
-              // disabled={ !(activeV && activeG) }
+              disabled={ !(activeV && activeG) }
               size='small'
               type='number'
               value={formik.values.deltaGvBefore}
@@ -136,7 +182,7 @@ export const FormCars = () => {
 
             <InputLabel>Расстояние между машинами  В и Г после обгона:</InputLabel>
             <TextField
-              // disabled={ !(activeV && activeG) }
+              disabled={ !(activeV && activeG) }
               size='small'
               type='number'
               value={formik.values.deltaGvAfter}

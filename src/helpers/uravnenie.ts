@@ -10,5 +10,5 @@ export const uravnenie = (a: number, b: number, c: number): number => {
 		tmp.push((-b - Math.sqrt(D)) / (2 * a));
 		res.push(...tmp);
 	}
-	return Math.ceil(Math.max(...res));
+	return Math.ceil(Math.max(...res, 0));
 };

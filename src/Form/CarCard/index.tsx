@@ -19,6 +19,8 @@ export function CarCard({formik, name, img}: ICarCard) {
       onChangeValue={formik.handleChange.bind(formik)}
       iconSrc={img}
       carName={name}
+      errors={formik.errors[name]}
+      touched={formik.touched[name]}
     />
   )
 }
