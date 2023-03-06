@@ -7,6 +7,9 @@ import blackCar from '../../public/assets/blackCar.png';
 import greenCar from '../../public/assets/greenCar.png';
 import yellowCar from '../../public/assets/yellowCar.png';
 
+import { isObgon } from '../helpers/isObgon';
+import { obgonAbs } from '../helpers/obgonAbs';
+
 export interface ICar {
   width: number | '',
   speed: number | '',
@@ -65,7 +68,18 @@ export const FormCars = () => {
     },
     onSubmit: (values) => {
       console.log(values);
-    },
+      
+        
+      try {
+        const cars1 = obgonAbs(values.carA, values.carB, +values.deltaAbBefore, +values.deltaAbAfter);
+        const cars2 = obgonAbs(values.carG, values.carV, +values.deltaGvBefore, +values.deltaGvAfter);
+        console.log(cars1, cars2);
+        
+        // console.log( isObgon(cars1, cars2, { ...values }, values.Xlast));
+      } catch (e) {
+          console.log(e);  
+       }
+      },
   });
   const {values:
     {
@@ -86,7 +100,7 @@ export const FormCars = () => {
           <Stack flexDirection='column' gap={1}>
             <InputLabel>Расстояние между машинами А и Б до обгона:</InputLabel>
             <TextField
-              disabled={ !(activeA && activeB) }
+              // disabled={ !(activeA && activeB) }
               size='small'
               type='number'
               value={formik.values.deltaAbBefore}
@@ -98,7 +112,7 @@ export const FormCars = () => {
 
             <InputLabel>Расстояние между машинами А и Б после обгона:</InputLabel>
             <TextField
-              disabled={ !(activeA && activeB) }
+              // disabled={ !(activeA && activeB) }
               size='small'
               type='number'
               value={formik.values.deltaAbAfter}
@@ -110,7 +124,7 @@ export const FormCars = () => {
 
             <InputLabel>Расстояние между машинами В и Г до обгона:</InputLabel>
             <TextField
-              disabled={ !(activeV && activeG) }
+              // disabled={ !(activeV && activeG) }
               size='small'
               type='number'
               value={formik.values.deltaGvBefore}
@@ -122,7 +136,7 @@ export const FormCars = () => {
 
             <InputLabel>Расстояние между машинами  В и Г после обгона:</InputLabel>
             <TextField
-              disabled={ !(activeV && activeG) }
+              // disabled={ !(activeV && activeG) }
               size='small'
               type='number'
               value={formik.values.deltaGvAfter}
