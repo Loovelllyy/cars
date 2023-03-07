@@ -105,6 +105,17 @@ const valid = object().shape({
         then: () => number().required(REQ).min(0, 'Минимальное ускорение машины: 0').max(4, 'Максимальное ускорение машины: 4'),
       }),
     }),
+  Xlast: number().required(REQ).min(200, 'Минимальноая длина дороги: 200').max(100000, 'Максимальная длина дороги: 100`000'),
+  deltaAbBefore: number().required(REQ).min(1, 'Минимальноe расстояние между машинами до обгона: 1').max(100, 'Максимальное расстояние между машинами до обгона: 100');
+  deltaAbAfter: number().required(REQ).min(1, 'Минимальноe расстояние между машинами после обгона: 1').max(100, 'Максимальное расстояние между машинами после обгона: 100');
+  deltaGvBefore: number().when(['carV.isActive', 'carG.isActive'], {
+    is: (isActiveV, isActiveG) => isActiveV && isActiveG,
+    then: () => number().required(REQ).min(1, 'Минимальноe расстояние между машинами до обгона: 1').max(100, 'Максимальное расстояние между машинами до обгона: 100'),
+  }),
+  deltaGvAfter: umber().when(['carV.isActive', 'carG.isActive'], {
+    is: (isActiveV, isActiveG) => isActiveV && isActiveG,
+    then: () => number().required(REQ).min(1, 'Минимальноe расстояние между машинами до обгона: 1').max(100, 'Максимальное расстояние между машинами до обгона: 100'),
+  }),
 })
 
 export const FormCars = () => {
