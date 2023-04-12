@@ -1,6 +1,6 @@
 {
   "name": "cars",
-  "source": "index.html",
+  "source": "./src/index.tsx",
   "scripts": {
     "start": "parcel public/index.html",
     "build": "parcel build"
